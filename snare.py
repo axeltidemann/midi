@@ -17,8 +17,7 @@ while True:
         data, delta = midi
         if data == utils.footswitch_on:
             print 'Snare {}'.format('ON' if snare else 'OFF')
-            value = 127 if snare else 0
-            midi_out.send_message(footswitch[:2] + [value])
+            midi_out.send_message(utils.footswitch_on if snare else utils.footswitch_off)
             snare = not snare
 
     sleep(.1)
